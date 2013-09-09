@@ -141,7 +141,7 @@ module Sms24x7
   def turn_on
 
     @active = true
-    puts "Отправка SMS ВКЛЮЧЕНА"
+    puts "[Sms24x7] Отправка SMS ВКЛЮЧЕНА"
     self
 
   end # turn_on
@@ -149,7 +149,7 @@ module Sms24x7
   def turn_off
 
     @active = false
-    puts "Отправка SMS ОТКЛЮЧЕНА"
+    puts "[Sms24x7] Отправка SMS ОТКЛЮЧЕНА"
     self
 
   end # turn_off
