@@ -46,7 +46,6 @@ module Sms24x7
         :text     => msg,
         :phone    => phone,
         :sender_name => ::Sms24x7::TITLE_SMS,
-        :unicode  => 1,
         :type     => opts[:type] || "SMS",
         :validity => opts[:validity],
         :postpone => opts[:postpone],
