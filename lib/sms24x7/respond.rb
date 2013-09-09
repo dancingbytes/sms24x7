@@ -32,7 +32,7 @@ module Sms24x7
 
       {
         time:     r["last_update"],
-        state:    r["state"]
+        state:    r["state"].to_i
       }
 
     end # sms_state
