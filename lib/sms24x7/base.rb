@@ -31,10 +31,7 @@ module Sms24x7
 
       end # block_run
 
-      return err  if err
-      return data if ::Sms24x7.error?(data)
-
-      data
+      err || data
 
     end # sessionid
 
@@ -73,10 +70,7 @@ module Sms24x7
 
       end # block_run
 
-      return err  if err
-      return data if ::Sms24x7.error?(data)
-
-      data
+      err || data
 
     end # sms_send
 
@@ -110,10 +104,7 @@ module Sms24x7
 
       end # block_run
 
-      return err  if err
-      return data if ::Sms24x7.error?(data)
-
-      data
+      err || data
 
     end # sms_state
 
@@ -146,10 +137,7 @@ module Sms24x7
 
       end # block_run
 
-      return err  if err
-      return data if ::Sms24x7.error?(data)
-
-      data
+      err || data
 
     end # balance
 
@@ -182,10 +170,7 @@ module Sms24x7
 
       end # block_run
 
-      return err  if err
-      return data if ::Sms24x7.error?(data)
-
-      data
+      err || data
 
     end # time
 
@@ -218,10 +203,7 @@ module Sms24x7
 
       end # block_run
 
-      return err  if err
-      return data if ::Sms24x7.error?(data)
-
-      data
+      err || data
 
     end # info
 
@@ -254,10 +236,7 @@ module Sms24x7
 
       end # block_run
 
-      return err  if err
-      return data if ::Sms24x7.error?(data)
-
-      data
+      err || data
 
     end # session_close
 
