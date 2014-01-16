@@ -18,7 +18,7 @@ module Sms24x7
   RETRY     = 3
   WAIT_TIME = 5
   PHONE_RE  = /\A(\+7|7|8)(\d{10})\Z/
-  TITLE_SMS = "Anlas.ru"
+  TITLE_SMS = "+79020982348" # Anlas.ru
 
   def login(usr, pass)
 
