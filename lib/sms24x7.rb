@@ -18,7 +18,7 @@ module Sms24x7
   RETRY     = 3
   WAIT_TIME = 5
   PHONE_RE  = /\A(\+7|7|8)(\d{10})\Z/
-  TITLE_SMS = "+79020982348" # Anlas.ru
+  TITLE_SMS = "Anlas.ru" # "+79020982348"
 
   def login(usr, pass)
 
@@ -35,7 +35,9 @@ module Sms24x7
 
   end # login
 
-  def message(phone, msg, opts = {})
+  def message(phone, msg, opts = nil)
+
+    opts ||= {}
 
     return ::Sms24x7::InactiveError.new("Отправка смс отключена") unless self.active?
 
@@ -47,7 +49,7 @@ module Sms24x7
     if reconnect?(res)
 
       self.login(@usr, @pass)
-      res = self.message(@session, phone, msg, opts)
+      res = self.message(phone, msg, opts)
 
     end # if
 
