@@ -11,21 +11,19 @@ module Sms24x7
 
   extend self
 
-  TIMEOUT   = 30
-  HOST      = 'api.sms24x7.ru'
-  PORT      = 443
-  USE_SSL   = true
-  RETRY     = 3
-  WAIT_TIME = 5
-  PHONE_RE  = /\A(\+7|7|8)(\d{10})\Z/
-  TITLE_SMS = "Anlas.ru" # "+79020982348"
+  TIMEOUT   = 30.freeze
+  HOST      = 'api.sms24x7.ru'.freeze
+  PORT      = 443.freeze
+  USE_SSL   = true.freeze
+  RETRY     = 3.freeze
+  WAIT_TIME = 5.freeze
+  PHONE_RE  = /\A(\+7|7|8)(\d{10})\Z/.freeze
+  TITLE_SMS = "Anlas.ru".freeze # "+79020982348"
 
   def login(usr, pass)
 
-    return ::Sms24x7::InactiveError.new("Отправка смс отключена") unless self.active?
-
     res = ::Sms24x7::Base.sessionid(usr, pass)
-    return res if self.error?(res)
+    return res if error?(res)
 
     @usr      = usr
     @pass     = pass
@@ -48,8 +46,8 @@ module Sms24x7
 
     if reconnect?(res)
 
-      self.login(@usr, @pass)
-      res = self.message(phone, msg, opts)
+      login(@usr, @pass)
+      res = ::Sms24x7::Base.sms_send(@session, phone, msg, opts)
 
     end # if
 
