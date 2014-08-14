@@ -5,6 +5,18 @@ module Sms24x7
 
     extend self
 
+    STATE_MESSAGE = {
+
+      0   => "Ожидает отправки",
+      1   => "Доставлено",
+      2   => "Не доставлено",
+      4   => "Принято оператором",
+      8   => "Принято СМС-центром",
+      16  => "Не принято СМС-центром",
+      32  => "Невозможно доставить"
+
+    }.freeze
+
     def sessionid(body)
 
       r = answer(body)
@@ -30,9 +42,14 @@ module Sms24x7
       r = answer(body)
       return r if ::Sms24x7.error?(r)
 
+      code = r["state"].to_i
+
       {
+
         time:     r["last_update"],
-        state:    r["state"].to_i
+        state:    code,
+        message:  STATE_MESSAGE[code] || "Неизвестная ошибка"
+
       }
 
     end # sms_state
