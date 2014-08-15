@@ -57,10 +57,7 @@ module Sms24x7
 
   def state(mid)
 
-    return ::Sms24x7::InactiveError.new("Отправка смс отключена") unless self.active?
-
     res = ::Sms24x7::Base.sms_state(@session, mid)
-
     if reconnect?(res)
 
       self.login(@usr, @pass)
@@ -74,10 +71,7 @@ module Sms24x7
 
   def balance
 
-    return ::Sms24x7::InactiveError.new("Отправка смс отключена") unless self.active?
-
     res = ::Sms24x7::Base.balance(@session)
-
     if reconnect?(res)
 
       self.login(@usr, @pass)
@@ -91,10 +85,7 @@ module Sms24x7
 
   def time
 
-    return ::Sms24x7::InactiveError.new("Отправка смс отключена") unless self.active?
-
     res = ::Sms24x7::Base.time(@session)
-
     if reconnect?(res)
 
       self.login(@usr, @pass)
@@ -108,10 +99,7 @@ module Sms24x7
 
   def info
 
-    return ::Sms24x7::InactiveError.new("Отправка смс отключена") unless self.active?
-
     res = ::Sms24x7::Base.info(@session)
-
     if reconnect?(res)
 
       self.login(@usr, @pass)
@@ -124,8 +112,6 @@ module Sms24x7
   end # info
 
   def logout
-
-    return ::Sms24x7::InactiveError.new("Отправка смс отключена") unless self.active?
 
     ::Sms24x7::Base.session_close(@session)
     @session = nil
