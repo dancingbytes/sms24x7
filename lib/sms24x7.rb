@@ -17,7 +17,7 @@ module Sms24x7
   USE_SSL   = true.freeze
   RETRY     = 3.freeze
   WAIT_TIME = 5.freeze
-  PHONE_RE  = /\A(\+7|7|8)(\d{10})\Z/.freeze
+  PHONE_RE  = /\A(\+7|7|8){0,1}(\d{10})\Z/.freeze
   TITLE_SMS = "Anlas.ru".freeze # "+79020982348"
 
   def login(usr, pass)
